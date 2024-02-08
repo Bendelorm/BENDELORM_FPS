@@ -14,13 +14,13 @@ ABENDELORMFPSCharacter::ABENDELORMFPSCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 	//Camera Component
-	FPCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
-	FPCameraComponent->SetupAttachment(GetCapsuleComponent());
-	FPCameraComponent->bUsePawnControlRotation = true;
+	FPVCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
+	FPVCameraComponent->SetupAttachment(GetCapsuleComponent());
+	FPVCameraComponent->bUsePawnControlRotation = true;
 
 	//Skeletal Mesh Component
 	SKFPV = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FPSMesh"));
-	SKFPV->SetupAttachment(FPCameraComponent);
+	SKFPV->SetupAttachment(FPVCameraComponent);
 }
 
 
@@ -62,6 +62,26 @@ void ABENDELORMFPSCharacter::LookAround(const FInputActionValue& Value)
 		AddControllerYawInput(LookAroundVector.X);
 		AddControllerPitchInput(LookAroundVector.Y);
 	}
+}
+
+void ABENDELORMFPSCharacter::SetHasWeapon(bool bHasNewWeapon)
+{
+	bHasWeapon = bHasNewWeapon;
+}
+
+bool ABENDELORMFPSCharacter::GetHasWeapon()
+{
+	return bHasWeapon;
+}
+
+USkeletalMeshComponent* ABENDELORMFPSCharacter::GetMeshSKFPV() const
+{
+	return SKFPV;
+}
+
+UCameraComponent* ABENDELORMFPSCharacter::GetSKFPVCameraComponent() const
+{
+	return FPVCameraComponent;
 }
 
 // Called every frame

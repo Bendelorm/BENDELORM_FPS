@@ -31,7 +31,7 @@ public:
 	//Components
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UCameraComponent* FPCameraComponent;
+	UCameraComponent* FPVCameraComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* SKFPV;
@@ -50,8 +50,22 @@ public:
 	UInputAction* LookAction;
 
 	void Move(const FInputActionValue& Value);
+
 	void LookAround(const FInputActionValue& Value);
 
+	//Weapon
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
+	bool bHasWeapon;
+
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
+	void SetHasWeapon(bool bHasNewWeapon);
+
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
+	bool GetHasWeapon();
+
+	USkeletalMeshComponent* GetMeshSKFPV() const;
+
+	UCameraComponent* GetSKFPVCameraComponent() const;
 
 protected:
 
