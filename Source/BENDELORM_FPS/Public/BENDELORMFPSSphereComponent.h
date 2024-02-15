@@ -12,10 +12,11 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPickUp, ABENDELORMFPSCharacter*, 
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable, BlueprintType, meta = (BlueprintSpawnableComponent))
 class BENDELORM_FPS_API UBENDELORMFPSSphereComponent : public USphereComponent
 {
 	GENERATED_BODY()
+public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnPickUp OnPickUp;

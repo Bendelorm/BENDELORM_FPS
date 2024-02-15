@@ -55,7 +55,7 @@ public:
 
 	//Weapon
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapon")
-	bool bHasWeapon;
+	bool bHasWeapon = false;
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	void SetHasWeapon(bool bHasNewWeapon);
