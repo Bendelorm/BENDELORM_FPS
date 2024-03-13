@@ -15,7 +15,7 @@ class BENDELORM_FPS_API UBENDELORM_FPS_SkeletalMeshComp : public USkeletalMeshCo
 {
 	GENERATED_BODY()
 public:
-	UBENDELORM_FPS_SkeletalMeshComp() = default;
+	UBENDELORM_FPS_SkeletalMeshComp();
 
 	ABENDELORMFPSCharacter* Character;
 
@@ -24,5 +24,33 @@ public:
 
 	UFUNCTION()
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WeaponSettings")
+	FVector GuntipOffset;
+
+
+	//IMC and Actions
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+	class UInputMappingContext* FireImc;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
+	class UInputAction* FireAction;
+
+	UFUNCTION(BlueprintCallable, Category = "Input")
+	void Fire();
+	
+	//Animation and Sound
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation and Sound")
+	USoundBase* FireSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation and Sound")
+	UAnimMontage* FireAnimation;
+
+	//Projectile
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile")
+	TSubclassOf<AActor> ProjectileToSpawn;
 
 };
