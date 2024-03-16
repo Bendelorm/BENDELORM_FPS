@@ -88,7 +88,6 @@ UCameraComponent* ABENDELORMFPSCharacter::GetSKFPVCameraComponent() const
 void ABENDELORMFPSCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
